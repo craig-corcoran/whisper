@@ -3,11 +3,13 @@ package echo.recorder.screens;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.media.MediaPlayer;
-import echo.recorder.R;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import echo.recorder.model.AudioManager;
 import echo.recorder.model.LineRenderer;
 import echo.recorder.model.VisualizerView;
+import echo.recorder.ui.PlayButton;
+import echo.recorder.ui.RecordButton;
 
 public class RecordScreen extends Screen {
 	
@@ -22,35 +24,37 @@ public class RecordScreen extends Screen {
 	
 	public void setContextView(Activity activity){
 		
-		manager.mPlayer = MediaPlayer.create(activity, R.raw.test);
-		manager.mPlayer.setLooping(true);
-		manager.mPlayer.start();
-
-	    // We need to link the visualizer view to the media player so that
-	    // it displays something
-	    mVisualizerView = new VisualizerView(activity);//(VisualizerView) findViewById(R.id.visualizerView);
-	    mVisualizerView.link(manager.mPlayer);
+//		MediaPlayer mPlayer = MediaPlayer.create(activity, R.raw.test);
+//		mPlayer.setLooping(true);
+//		mPlayer.start();
+//
+//	    // We need to link the visualizer view to the media player so that
+//	    // it displays something
+//	    mVisualizerView = new VisualizerView(activity);//(VisualizerView) findViewById(R.id.visualizerView);
+//	    mVisualizerView.link(manager.mPlayer);
 
 	    // Start with just line renderer
-	    addLineRenderer();
-	    activity.setContentView(mVisualizerView);
+//	    addLineRenderer();
+//	    activity.setContentView(mVisualizerView);
 		
-//		LinearLayout ll = new LinearLayout(activity);
-//		
-//        RecordButton recordButton = new RecordButton(activity, manager);
-//        ll.addView(recordButton,
-//            new LinearLayout.LayoutParams(
-//                ViewGroup.LayoutParams.WRAP_CONTENT,
-//                ViewGroup.LayoutParams.WRAP_CONTENT,
-//                0));
-//        
-//        PlayButton playButton = new PlayButton(activity, manager);
-//        ll.addView(playButton,
-//            new LinearLayout.LayoutParams(
-//                ViewGroup.LayoutParams.WRAP_CONTENT,
-//                ViewGroup.LayoutParams.WRAP_CONTENT,
-//                0));
-//        activity.setContentView(ll);
+		LinearLayout ll = new LinearLayout(activity);
+		
+        RecordButton recordButton = new RecordButton(activity, manager);
+        ll.addView(recordButton,
+            new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                0));
+        
+        PlayButton playButton = new PlayButton(activity, manager);
+        ll.addView(playButton,
+            new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                0));
+        
+        //ll.addView(mVisualizerView);
+        activity.setContentView(ll);
 		
 	}
 	
