@@ -14,6 +14,7 @@ package echo.recorder;
 
 import android.app.Activity;
 import android.os.Bundle;
+import echo.recorder.model.GPSTracker;
 import echo.recorder.screens.MainMenu;
 import echo.recorder.screens.Screen;
 
@@ -21,10 +22,12 @@ import echo.recorder.screens.Screen;
 public class EchoActivity extends Activity {
 	
 	Screen currentScreen;
+	public static GPSTracker gps;
 	
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        gps = new GPSTracker(this);
         currentScreen = new MainMenu(this);
     }
 

@@ -1,5 +1,6 @@
 package echo.recorder.model;
 
+import java.io.File;
 import java.io.IOException;
 
 import android.media.MediaPlayer;
@@ -19,7 +20,7 @@ public class AudioManager {
 	
 	public AudioManager() {
         mFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
-        mFileName += "/audiorecordtest.3gp";
+        mFileName += "/most-recent-recording.aac";
 	}
 	
 	/**
@@ -71,7 +72,7 @@ public class AudioManager {
         Log.i("path","" + mFileName);
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
-        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
         mRecorder.setOutputFile(mFileName);
         
         try {
@@ -87,6 +88,7 @@ public class AudioManager {
         mRecorder.stop();
         mRecorder.release();
         mRecorder = null;
+        new MakeJson(new File(mFileName));
     }
 
 }
