@@ -6,6 +6,8 @@ import android.graphics.Paint;
 import android.media.MediaPlayer;
 import echo.recorder.R;
 import echo.recorder.model.AudioManager;
+import echo.recorder.model.LineRenderer;
+import echo.recorder.model.VisualizerView;
 
 public class RecordScreen extends Screen {
 	
