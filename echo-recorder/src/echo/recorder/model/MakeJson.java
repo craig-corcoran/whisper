@@ -97,11 +97,11 @@ public class MakeJson {
         nameValuePairs.add(new BasicNameValuePair("jsonString", json.toString()));
         postMethod.setEntity(new UrlEncodedFormEntity(nameValuePairs));
         String response = httpClient.execute(postMethod,resonseHandler);
-        Log.v("beginresponse","");
-        JSONObject jsonResponse = new JSONObject(response);
         
+        JSONObject jsonResponse = new JSONObject(response);
+        Log.v("beginresponse","beginresponse");
         Log.v("server response", jsonResponse.toString());
-        Log.v("endresponse","");
+        Log.v("endresponse","endresponse");
         //Log.v("msg to server", json.toString());
    }
 	
