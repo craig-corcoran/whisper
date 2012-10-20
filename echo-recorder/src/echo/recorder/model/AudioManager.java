@@ -85,10 +85,16 @@ public class AudioManager {
     }
 
     private void stopRecording() {
+		new Thread(new Runnable() {
+	        public void run() {
+	        	new MakeJson(new File(mFileName));
+	        }
+	    }).start();
+    	
         mRecorder.stop();
         mRecorder.release();
         mRecorder = null;
-        new MakeJson(new File(mFileName));
+        
     }
 
 }

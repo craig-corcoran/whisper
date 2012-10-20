@@ -45,7 +45,7 @@ public class MakeJson {
 		catch (Exception e) {
 		}
 		try{
-			getServerData();
+			pushServerData();
 		}
 		catch (Exception e) {
 			
@@ -54,6 +54,9 @@ public class MakeJson {
 	
 	// Returns the contents of the file in a byte array.
 	public static byte[] getBytesFromFile(File file) throws IOException {
+		
+		Log.i("get bytes", "file: " + file);
+		
 	    InputStream is = new FileInputStream(file);
 
 	    // Get the size of the file
@@ -88,10 +91,13 @@ public class MakeJson {
 	    return bytes;
 	}
 	
-	public void getServerData() throws JSONException, ClientProtocolException, IOException {
-        DefaultHttpClient httpClient = new DefaultHttpClient();
+	public void pushServerData() throws JSONException, ClientProtocolException, IOException {
+		
+		Log.i("push data", "wooooo");
+		
+    	DefaultHttpClient httpClient = new DefaultHttpClient();
         ResponseHandler <String> resonseHandler = new BasicResponseHandler();
-        HttpPost postMethod = new HttpPost("http://guarded-earth-9510.herokuapp.com/upload_geoaudio/");
+        HttpPost postMethod = new HttpPost("http://wisprly.herokuapp.com/upload_geoaudio/");
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
         //Log.v("JSON being sent", json.toString());
         nameValuePairs.add(new BasicNameValuePair("jsonString", json.toString()));
@@ -99,9 +105,14 @@ public class MakeJson {
         String response = httpClient.execute(postMethod,resonseHandler);
         
         JSONObject jsonResponse = new JSONObject(response);
-        Log.v("beginresponse","beginresponse");
-        Log.v("server response", jsonResponse.toString());
-        Log.v("endresponse","endresponse");
+        
+        Log.i("begin response","beginresponse");
+        Log.i("server response", jsonResponse.toString());
+        Log.i("end response","endresponse");
+		
+		
+		
+        
         //Log.v("msg to server", json.toString());
    }
 	

@@ -3,6 +3,7 @@ package echo.recorder.screens;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.media.MediaPlayer;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import echo.recorder.model.AudioManager;
@@ -15,6 +16,7 @@ public class RecordScreen extends Screen {
 	
 	AudioManager manager;
 	VisualizerView mVisualizerView;
+	MediaPlayer mPlayer;
 	
 	public RecordScreen(Activity activity){
 		super(activity);
@@ -23,20 +25,21 @@ public class RecordScreen extends Screen {
 	}
 	
 	public void setContextView(Activity activity){
+//		ConnectivityManager connectionMan = (ConnectivityManager) activity.getSystemService(activity.CONNECTIVITY_SERVICE);
 		
-//		MediaPlayer mPlayer = MediaPlayer.create(activity, R.raw.test);
+//		mPlayer = MediaPlayer.create(activity, R.raw.test);
 //		mPlayer.setLooping(true);
 //		mPlayer.start();
-//
-//	    // We need to link the visualizer view to the media player so that
-//	    // it displays something
+////
+////	    // We need to link the visualizer view to the media player so that
+////	    // it displays something
 //	    mVisualizerView = new VisualizerView(activity);//(VisualizerView) findViewById(R.id.visualizerView);
-//	    mVisualizerView.link(manager.mPlayer);
-
-	    // Start with just line renderer
+//	    mVisualizerView.link(mPlayer);
+//
+//	    // Start with just line renderer
 //	    addLineRenderer();
 //	    activity.setContentView(mVisualizerView);
-		
+	    
 		LinearLayout ll = new LinearLayout(activity);
 		
         RecordButton recordButton = new RecordButton(activity, manager);
